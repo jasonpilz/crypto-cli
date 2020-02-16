@@ -15,9 +15,9 @@ import (
 )
 
 const (
-	// TEMPLATE_TODO Repo is the github repository
-	Repo = "go-cli"
-	// TEMPLATE_TODO Owner is the github repository owner
+	// Repo is the github repository
+	Repo = "crypto-cli"
+	// Owner is the github repository owner
 	Owner = "jasonpilz"
 )
 

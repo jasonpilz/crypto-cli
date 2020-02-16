@@ -2,9 +2,8 @@
 
 set -eu
 
-# TEMPLATE_TODO: Update ORG and REPO variables
 ORG=jasonpilz
-REPO=go-cli
+REPO=crypto-cli
 
 tfile=$(mktemp /tmp/$REPO-CHANGELOG-XXXXXX)
 github-changelog-generator -org "$ORG" -repo "$REPO" >"$tfile"

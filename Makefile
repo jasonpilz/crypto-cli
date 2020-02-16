@@ -5,8 +5,7 @@ export
 .PHONY: install
 install:
 	@echo "==> Installing cli locally"
-	@echo "==> TEMPLATE_TODO: Rename 'cli' folder to the desired name of cli binary"
-	go install ./cmd/cli
+	go install ./cmd/crypto
 
 .PHONY: docker/login
 docker/login:
