@@ -8,8 +8,6 @@ RUN apk add --update \
 
 WORKDIR /app
 
-# TEMPLATE_TODO: Replace instances of 'cli' with binary named in .goreleaser.yml (builds.binary)
-COPY cli .
+COPY crypto .
 
-# TEMPLATE_TODO: Replace instances of 'cli' with binary named in .goreleaser.yml (builds.binary)
-ENTRYPOINT ["./cli"]
+ENTRYPOINT ["./crypto"]
