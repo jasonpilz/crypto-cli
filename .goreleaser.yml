@@ -1,23 +1,22 @@
-# TEMPLATE_TODO: Replace instances of 'go-cli', 'cli' and 'jasonpilz'
-project_name: go-cli
+project_name: crypto-cli
 
 before:
   hooks:
     - make docker/login
 
 builds:
-  - main: ./cmd/cli/main.go
-    binary: cli
+  - main: ./cmd/crypto/main.go
+    binary: crypto
     env:
       - CGO_ENABLED=0
     flags:
       - -v
     ldflags:
-      - -X github.com/jasonpilz/go-cli/spec.Build={{ .ShortCommit }}
-      - -X github.com/jasonpilz/go-cli/spec.Major={{ .Major }}
-      - -X github.com/jasonpilz/go-cli/spec.Minor={{ .Minor }}
-      - -X github.com/jasonpilz/go-cli/spec.Patch={{ .Patch }}
-      - -X github.com/jasonpilz/go-cli/spec.Label=release
+      - -X github.com/jasonpilz/crypto-cli/spec.Build={{ .ShortCommit }}
+      - -X github.com/jasonpilz/crypto-cli/spec.Major={{ .Major }}
+      - -X github.com/jasonpilz/crypto-cli/spec.Minor={{ .Minor }}
+      - -X github.com/jasonpilz/crypto-cli/spec.Patch={{ .Patch }}
+      - -X github.com/jasonpilz/crypto-cli/spec.Label=release
     goos:
       - windows
       - darwin
@@ -27,7 +26,7 @@ builds:
         goarch: 386
 
 archives:
-  - name_template: "go-cli-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+  - name_template: "crypto-cli-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
     files: [workaround-to-include-only-the-binary*]
     wrap_in_directory: false
     format_overrides:
@@ -35,7 +34,7 @@ archives:
         format: zip
 
 checksum:
-  name_template: "go-cli-{{ .Version }}-checksums.sha256"
+  name_template: "crypto-cli-{{ .Version }}-checksums.sha256"
 
 snapshot:
   name_template: "{{ .Tag }}-next"
@@ -43,14 +42,14 @@ snapshot:
 dockers:
   - dockerfile: Dockerfile.goreleaser
     image_templates:
-      - "jasonpilz/go-cli:latest"
-      - "jasonpilz/go-cli:{{ .Major }}-latest"
-      - "jasonpilz/go-cli:{{ .Version }}"
+      - "jasonpilz/crypto-cli:latest"
+      - "jasonpilz/crypto-cli:{{ .Major }}-latest"
+      - "jasonpilz/crypto-cli:{{ .Version }}"
 
 release:
   github:
     owner: jasonpilz
-    name: go-cli
+    name: crypto-cli
 
 changelog:
   skip: true
