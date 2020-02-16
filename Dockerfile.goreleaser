@@ -1,0 +1,15 @@
+FROM alpine:3.10
+
+RUN apk add --update \
+        bash \
+        curl \
+        ca-certificates \
+        && rm -rf /var/cache/apk/*
+
+WORKDIR /app
+
+# TEMPLATE_TODO: Replace instances of 'cli' with binary named in .goreleaser.yml (builds.binary)
+COPY cli .
+
+# TEMPLATE_TODO: Replace instances of 'cli' with binary named in .goreleaser.yml (builds.binary)
+ENTRYPOINT ["./cli"]
