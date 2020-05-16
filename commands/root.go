@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/jasonpilz/crypto-cli/config"
 	"github.com/spf13/cobra"
 )
 
@@ -23,7 +24,10 @@ func Execute() {
 }
 
 func init() {
+	config.Init()
+
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(configureCmd)
+	rootCmd.AddCommand(portfolioCmd)
 	rootCmd.AddCommand(transactionCmd)
 }

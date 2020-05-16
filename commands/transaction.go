@@ -2,7 +2,6 @@ package commands
 
 import (
 	"github.com/jasonpilz/crypto-cli/commands/transaction"
-	"github.com/jasonpilz/crypto-cli/config"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -19,8 +18,6 @@ Examples:
 }
 
 func init() {
-	config.Init()
-
 	transactionCmd.AddCommand(transaction.ListCmd)
 
 	transactionCmd.PersistentFlags().StringP("portfolio", "p", "default", "transaction portfolio")

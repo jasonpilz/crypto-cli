@@ -3,7 +3,6 @@ package commands
 import (
 	"fmt"
 
-	"github.com/jasonpilz/crypto-cli/config"
 	"github.com/jasonpilz/crypto-cli/prompt"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -27,8 +26,6 @@ Examples:
 }
 
 func runConfigureCmd(cmd *cobra.Command, args []string) {
-	config.Init()
-
 	// Set Coin Market Cap API Key
 	var cmcKey string
 	existingKey := viper.GetString("CMC_PRO_API_KEY")
