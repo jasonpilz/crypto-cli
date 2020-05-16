@@ -6,6 +6,14 @@
 
 > [WIP]
 
+## Development
+
+```sh
+go vet ./...
+go test ./...
+go install ./cmd/crypto
+```
+
 ## Releasing
 
 > This project follows [semantic versioning](semver.org).
