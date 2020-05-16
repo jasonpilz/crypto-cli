@@ -1,10 +1,13 @@
 package commands
 
 import (
+	"fmt"
+
 	"github.com/jasonpilz/crypto-cli/config"
 	"github.com/jasonpilz/crypto-cli/prompt"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/ttacon/chalk"
 )
 
 // configureCmd represents the configure command
@@ -37,4 +40,5 @@ func runConfigureCmd(cmd *cobra.Command, args []string) {
 	viper.Set("CMC_PRO_API_KEY", cmcKey)
 
 	viper.WriteConfig()
+	fmt.Println(chalk.Bold.TextStyle("\nConfiguration Updated"))
 }

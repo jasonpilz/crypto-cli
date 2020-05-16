@@ -20,6 +20,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.6.1
 	github.com/stretchr/testify v1.4.0 // indirect
+	github.com/ttacon/chalk v0.0.0-20160626202418-22c06c80ed31
 	golang.org/x/net v0.0.0-20191118183410-d06c31c94cae // indirect
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sys v0.0.0-20191118133127-cf1e2d577169 // indirect
