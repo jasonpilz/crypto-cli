@@ -8,6 +8,7 @@ require (
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20190812055157-5d271430af9f // indirect
+	github.com/jinzhu/gorm v1.9.12 // indirect
 	github.com/joho/godotenv v1.3.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pelletier/go-toml v1.6.0 // indirect
