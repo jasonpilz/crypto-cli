@@ -1,10 +1,11 @@
 package portfolio
 
 import (
-	"fmt"
+	"os"
 
+	"github.com/jasonpilz/crypto-cli/database"
+	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
-	// "github.com/spf13/viper"
 )
 
 // listCmd represents the list command
@@ -19,5 +20,27 @@ Examples:
 }
 
 func runListCmd(cmd *cobra.Command, args []string) {
-	fmt.Println("Called portfolio list")
+	// TODO: Extract to pre-run
+	db := database.GetDb().
+		LogMode(true)
+	defer db.Close()
+
+	portfolios := []database.Portfolio{}
+	db.Find(&portfolios)
+
+	data := [][]string{}
+	for _, p := range portfolios {
+		data = append(data, []string{p.Name, p.Description})
+	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Name", "Description"})
+	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+	table.SetCenterSeparator("|")
+	table.AppendBulk(data)
+	table.Render()
 }
+
+// TODO: Save for portfolio new command
+// portfolio := database.Portfolio{Name: "hodl", Description: "life savings"}
+// db.Create(&portfolio)
