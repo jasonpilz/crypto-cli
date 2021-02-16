@@ -12,19 +12,42 @@ import (
 
 const app = "crypto"
 
-var (
-	dbPath string
-	Sqlite *gorm.DB
-)
+var dbPath string
+
+type Portfolio struct {
+	gorm.Model
+	Name         string `gorm:"unique;not null"`
+	Description  string
+	Transactions []Transaction
+}
+
+type Transaction struct {
+	gorm.Model
+	PortfolioID int
+	// BTC
+	CoinName string `gorm:"not null"`
+	// 0.025896
+	CoinAmount float64 `gorm:"not null"`
+	// 2.77
+	CoinPrice float64 `gorm:"not null"`
+	// 3.84
+	Fee float64 `gorm:"not null"`
+	// 100.00
+	Total float64 `gorm:"not null"`
+}
 
 func init() {
-	sqlite, err := gorm.Open("sqlite3", getDbPath())
+	GetDb().AutoMigrate(&Portfolio{}, &Transaction{})
+}
+
+func GetDb() *gorm.DB {
+	db, err := gorm.Open("sqlite3", getDbPath())
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
-	defer sqlite.Close()
+	return db
 }
 
 func getDbPath() string {
