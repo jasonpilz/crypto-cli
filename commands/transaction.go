@@ -14,11 +14,13 @@ var transactionCmd = &cobra.Command{
 Requires use of sub-command.
 
 Examples:
+  crypto transaction new
   crypto transaction list`,
 }
 
 func init() {
 	transactionCmd.AddCommand(transaction.ListCmd)
+	transactionCmd.AddCommand(transaction.NewCmd)
 
 	transactionCmd.PersistentFlags().StringP("portfolio", "p", "default", "transaction portfolio")
 
